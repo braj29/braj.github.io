@@ -9,9 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f172a; /* slate-900 */
+            background-color: #0b1120;
+            background: linear-gradient(-45deg, #0b1120, #0f172a, #1e293b, #0f172a);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
             color: #94a3b8; /* slate-400 */
         }
         
@@ -23,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at var(--x) var(--y), transparent 10%, rgba(0, 0, 0, 0.95) 25%);
+            background: radial-gradient(circle at var(--x) var(--y), transparent 10%, rgba(0, 0, 0, 0.9) 35%);
             z-index: 2;
         }
 
@@ -65,18 +74,26 @@
 
         /* Project/Experience card hover effect */
         .card-hover-effect {
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border: 1px solid transparent;
+            background-color: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(4px);
         }
         .card-hover-effect:hover {
-            background-color: rgba(30, 41, 59, 0.5); /* slate-800 with opacity */
+            background-color: rgba(30, 41, 59, 0.7); /* slate-800 with opacity */
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px -15px rgba(2, 132, 199, 0.2);
+            box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.1);
             border-color: rgba(56, 189, 248, 0.2);
         }
         
         .card-hover-effect:hover .card-title {
              color: #38bdf8; /* sky-400 */
+        }
+
+        .text-gradient {
+            background: -webkit-linear-gradient(45deg, #e0f2fe, #7dd3fc, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
@@ -91,7 +108,9 @@
                 <div class="flex items-center gap-4">
                     <img src="https://placehold.co/80x80/e2e8f0/0f172a?text=RB&font=inter" alt="Raj Bhalwankar" class="rounded-full border-2 border-slate-600">
                     <div>
-                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-200">Raj Bhalwankar</h1>
+                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-200">
+                            <span class="text-gradient">Raj Bhalwankar</span>
+                        </h1>
                         <h2 class="mt-2 text-lg md:text-xl font-medium tracking-tight text-slate-400">Senior Machine Learning Engineer</h2>
                     </div>
                 </div>
@@ -125,34 +144,40 @@
                 </nav>
             </div>
             
-            <!-- Social Links -->
-            <ul class="flex items-center mt-8 space-x-6">
-                <li><a href="https://github.com/braj29" target="_blank" title="GitHub" class="block hover:text-sky-400 transition-colors duration-300">
-                    <span class="sr-only">GitHub</span>
-                    <svg class="h-6 w-6" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-                </a></li>
-                <li><a href="https://www.linkedin.com/in/raj-bhalwankar" target="_blank" title="LinkedIn" class="block hover:text-sky-400 transition-colors duration-300">
-                    <span class="sr-only">LinkedIn</span>
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.62 1.62 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
-                </a></li>
-                 <li><a href="https://www.researchgate.net/profile/Raj-Bhalwankar" target="_blank" title="ResearchGate" class="block hover:text-sky-400 transition-colors duration-300">
-                    <span class="sr-only">ResearchGate</span>
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 512 512"><path d="M336 336H176a16 16 0 000 32h160a16 16 0 000-32zm-160-64h160a16 16 0 000-32H176a16 16 0 000 32zm160-128H176a16 16 0 000 32h160a16 16 0 000-32zM256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm144 256c0 25.4-6.8 49.3-18.9 69.7l-86.8-86.8V144h32v120.1l87.5 87.5A143.2 143.2 0 00400 288zm-144 144c-25.4 0-49.3-6.8-69.7-18.9l86.8-86.8H400v-32H287.9l86.8-86.8A143.23 143.23 0 01400 112c25.4 0 49.3 6.8 69.7 18.9l-86.8 86.8V400h-32V279.9l-87.5-87.5A143.2 143.2 0 00112 256c0-25.4 6.8-49.3 18.9-69.7l86.8 86.8V400h32V295.9l86.8 86.8A143.23 143.23 0 01256 432z"/></svg>
-                </a></li>
-            </ul>
+            <div class="flex flex-col gap-6">
+                <!-- Social Links -->
+                <ul class="flex items-center space-x-6">
+                    <li><a href="https://github.com/braj29" target="_blank" title="GitHub" class="block text-slate-400 hover:text-sky-400 transition-colors duration-300">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    </a></li>
+                    <li><a href="https://www.linkedin.com/in/raj-bhalwankar" target="_blank" title="LinkedIn" class="block text-slate-400 hover:text-sky-400 transition-colors duration-300">
+                        <span class="sr-only">LinkedIn</span>
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.62 1.62 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+                    </a></li>
+                     <li><a href="https://www.researchgate.net/profile/Raj-Bhalwankar" target="_blank" title="ResearchGate" class="block text-slate-400 hover:text-sky-400 transition-colors duration-300">
+                        <span class="sr-only">ResearchGate</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 512 512"><path d="M336 336H176a16 16 0 000 32h160a16 16 0 000-32zm-160-64h160a16 16 0 000-32H176a16 16 0 000 32zm160-128H176a16 16 0 000 32h160a16 16 0 000-32zM256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm144 256c0 25.4-6.8 49.3-18.9 69.7l-86.8-86.8V144h32v120.1l87.5 87.5A143.2 143.2 0 00400 288zm-144 144c-25.4 0-49.3-6.8-69.7-18.9l86.8-86.8H400v-32H287.9l86.8-86.8A143.23 143.23 0 01400 112c25.4 0 49.3 6.8 69.7 18.9l-86.8 86.8V400h-32V279.9l-87.5-87.5A143.2 143.2 0 00112 256c0-25.4 6.8-49.3 18.9-69.7l86.8 86.8V400h32V295.9l86.8 86.8A143.23 143.23 0 01256 432z"/></svg>
+                    </a></li>
+                </ul>
+                <!-- Resume Button -->
+                <a href="#resume" target="_blank" class="mt-8 inline-block rounded-md bg-sky-400/20 px-4 py-2 text-sm font-semibold text-sky-300 border border-sky-400/30 hover:bg-sky-400/30 hover:text-white hover:border-sky-400/50 transition-all duration-300 text-center">
+                    View Resume
+                </a>
+            </div>
         </header>
         
         <!-- RIGHT: Main Content -->
         <main class="lg:w-1/2 lg:py-8">
             <section id="about" class="fade-in-section mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
                 <h2 class="text-2xl font-bold tracking-tight text-slate-200 lg:hidden mb-6">About</h2>
-                <p class="mb-4">
+                <p class="mb-4 leading-relaxed">
                     My journey into AI began in 2019, evolving from a fascination with cognitive architectures to a deep expertise in reinforcement learning and MLOps. This dual passion led me to pursue master's degrees in both Artificial Intelligence and Organizational Psychology, giving me a unique perspective that blends technical algorithm design with a profound understanding of human cognition.
                 </p>
-                <p class="mb-4">
+                <p class="mb-4 leading-relaxed">
                     Currently, as a GenAI Solutions Lead at ABN-AMRO's CISO, I'm at the forefront of applying advanced AI to solve critical cybersecurity challenges. I architect and deploy secure, scalable Generative AI systems to detect sophisticated threats, from advanced phishing campaigns to automated secret scanning in vast codebases.
                 </p>
-                <p>
+                <p class="leading-relaxed">
                     My core mission is to translate state-of-the-art research into tangible, high-impact solutions, engineering AI systems that are not just intelligent but also robust, reliable, and fundamentally secure.
                 </p>
             </section>
@@ -206,33 +231,35 @@
                 <h2 class="text-2xl font-bold tracking-tight text-slate-200 lg:hidden mb-6">Projects</h2>
                 <div class="space-y-4">
                     <!-- Project Item -->
-                    <div class="card-hover-effect p-6 rounded-lg">
-                        <a href="https://github.com/braj29/Beaconing-Detection-AI" target="_blank" class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
+                    <a href="https://github.com/braj29/Beaconing-Detection-AI" target="_blank" class="block card-hover-effect p-6 rounded-lg group">
+                        <div class="relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
                             <div class="z-10 sm:order-2 sm:col-span-6">
-                                <h3 class="font-medium text-slate-200 card-title transition-colors duration-300">
+                                <h3 class="font-medium text-slate-200 card-title transition-colors duration-300 flex items-center gap-2">
                                     Beaconing & Exfiltration Detection AI
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg>
                                 </h3>
                                 <p class="mt-2 text-sm leading-normal">
                                     An AI-based threat detection system for identifying C2 beaconing behavior and data exfiltration patterns in network logs using anomaly detection and deep learning.
                                 </p>
                             </div>
                             <img alt="Beaconing Detection project image" loading="lazy" width="200" height="48" class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-400/30 sm:order-1 sm:col-span-2 sm:translate-y-1" style="color:transparent" src="https://placehold.co/200x112/1e293b/94a3b8?text=Network+AI&font=inter">
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                     <!-- Project Item -->
-                    <div class="card-hover-effect p-6 rounded-lg">
-                        <a href="https://github.com/braj29/NeuroSymbolic-SepsisRL" target="_blank" class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
+                    <a href="https://github.com/braj29/NeuroSymbolic-SepsisRL" target="_blank" class="block card-hover-effect p-6 rounded-lg group">
+                        <div class="relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
                             <div class="z-10 sm:order-2 sm:col-span-6">
-                                <h3 class="font-medium text-slate-200 card-title transition-colors duration-300">
+                                <h3 class="font-medium text-slate-200 card-title transition-colors duration-300 flex items-center gap-2">
                                     Neuro-Symbolic RL for Sepsis Treatment
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg>
                                 </h3>
                                 <p class="mt-2 text-sm leading-normal">
                                     Master's thesis project developing a neuro-symbolic RL agent to optimize sepsis treatment pathways, incorporating medical knowledge as temporal logic constraints.
                                 </p>
                             </div>
                             <img alt="Neuro-Symbolic RL project image" loading="lazy" width="200" height="48" class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-400/30 sm:order-1 sm:col-span-2 sm:translate-y-1" style="color:transparent" src="https://placehold.co/200x112/1e293b/94a3b8?text=Health+AI&font=inter">
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </section>
 
@@ -284,9 +311,17 @@
                     </a>
                 </div>
             </section>
+            
+            <section class="fade-in-section text-center">
+                 <h2 class="text-2xl font-bold tracking-tight text-slate-200">Get In Touch</h2>
+                 <p class="mt-4 max-w-xl mx-auto">I'm always open to discussing new projects, research collaborations, or interesting opportunities in the world of AI. Feel free to connect with me.</p>
+                 <a href="https://www.linkedin.com/in/raj-bhalwankar" target="_blank" class="mt-8 inline-block rounded-md bg-sky-400 px-6 py-3 text-lg font-semibold text-slate-900 hover:bg-sky-300 transition-all duration-300">
+                    Connect on LinkedIn
+                </a>
+            </section>
 
-            <footer class="text-center text-sm text-slate-500 mt-16 pb-8">
-                <p>Designed in Figma, built with Tailwind CSS. Hosted on GitHub Pages.</p>
+            <footer class="text-center text-sm text-slate-500 mt-24 pb-8">
+                <p>Designed with passion, built with Tailwind CSS. Hosted on GitHub Pages.</p>
                 <p>&copy; 2025 Raj Bhalwankar. All Rights Reserved.</p>
             </footer>
 
